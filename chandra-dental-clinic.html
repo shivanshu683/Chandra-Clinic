@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chandra Dental Clinic — Dr. Umesh Chandra, Basti</title>
+<meta name="description" content="Chandra Dental Clinic, Basti — Dr. Umesh Chandra. Check-ups, root canals, implants, cosmetic dentistry, paediatric care and emergency treatment. Appointments recommended.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#123832;
+    --ink-soft:#3E5C55;
+    --bg:#F4F6F0;
+    --surface:#FFFFFF;
+    --teal:#1F6F5C;
+    --teal-deep:#0E2D27;
+    --mint-tint:#E3EFE7;
+    --gold:#C99A2E;
+    --line:#D7E1D6;
+    --max:1120px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:1px;
+    background:var(--teal);
+    display:inline-block;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  :focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(244,246,240,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+    gap:16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:-.01em;
+    text-decoration:none;
+  }
+  .brand-mark{
+    width:38px; height:38px;
+    flex-shrink:0;
+  }
+  .brand small{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:400;
+    font-size:11px;
+    letter-spacing:.06em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+  nav.links{
+    display:flex; gap:28px;
+    font-size:14.5px;
+    font-weight:500;
+  }
+  nav.links a{ text-decoration:none; position:relative; }
+  nav.links a::after{
+    content:""; position:absolute; left:0; bottom:-5px;
+    width:0; height:1.5px; background:var(--teal);
+    transition:width .25s ease;
+  }
+  nav.links a:hover::after{ width:100%; }
+  .header-actions{ display:flex; align-items:center; gap:14px; }
+  .phone-chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    text-decoration:none;
+    display:none;
+  }
+  .btn{
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    padding:11px 20px;
+    border-radius:3px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid transparent;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn-primary{ background:var(--teal); color:#fff; }
+  .btn-primary:hover{ background:var(--teal-deep); }
+  .btn-outline{ background:transparent; color:var(--ink); border-color:var(--ink); }
+  .btn-outline:hover{ background:var(--ink); color:#fff; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:64px 0 0;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:start;
+    padding-bottom:56px;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.2vw, 60px);
+    line-height:1.04;
+    margin:18px 0 22px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--teal);
+  }
+  .hero p.lede{
+    font-size:17.5px;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin-bottom:30px;
+  }
+  .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:8px; }
+
+  .patient-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:26px 26px 22px;
+    position:relative;
+  }
+  .patient-card::before{
+    content:"PATIENT INFO CARD";
+    position:absolute; top:-11px; left:22px;
+    background:var(--gold);
+    color:var(--teal-deep);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.1em;
+    padding:3px 10px;
+    border-radius:2px;
+  }
+  .pc-name{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:21px;
+    margin-bottom:2px;
+  }
+  .pc-role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  .pc-row{
+    display:flex;
+    gap:14px;
+    padding:13px 0;
+    border-top:1px dashed var(--line);
+    font-size:14px;
+  }
+  .pc-row:first-of-type{ border-top:1px dashed var(--line); }
+  .pc-icon{ flex-shrink:0; width:18px; height:18px; margin-top:1px; color:var(--teal); }
+  .pc-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:block;
+    margin-bottom:2px;
+  }
+  .pc-value{ color:var(--ink); font-weight:500; }
+  .pc-value a{ text-decoration:none; border-bottom:1px solid var(--line); }
+  .pc-actions{ display:flex; gap:10px; margin-top:20px; }
+  .pc-actions .btn{ flex:1; justify-content:center; padding:11px 10px; font-size:13.5px;}
+
+  /* ---------- Tooth chart divider (signature element) ---------- */
+  .chart-divider{
+    padding:6px 0 28px;
+  }
+  .chart-divider .wrap{ overflow-x:hidden; }
+  .tooth-row{ width:100%; height:auto; display:block; }
+  .tooth-row path.tooth{
+    fill:none;
+    stroke:var(--teal);
+    stroke-width:1.4;
+    opacity:0.55;
+  }
+  .tooth-row .tooth-fill{
+    fill:var(--surface);
+    stroke:var(--teal);
+    stroke-width:1.4;
+  }
+  .tooth-row .tooth-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:7.5px;
+    fill:var(--ink-soft);
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:76px 0; }
+  .section-head{ max-width:640px; margin-bottom:44px; }
+  .section-head h2{ font-size:clamp(28px,3.4vw,38px); margin-top:14px; }
+  .section-head p{ color:var(--ink-soft); margin-top:14px; font-size:15.5px; }
+
+  .alt-bg{ background:var(--mint-tint); }
+
+  /* ---------- Services ---------- */
+  .service-groups{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .service-group{ background:var(--surface); padding:30px 30px 26px; }
+  .service-group h3{
+    font-size:16.5px;
+    font-weight:600;
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:6px;
+  }
+  .service-group .group-icon{ width:22px; height:22px; color:var(--teal); flex-shrink:0; }
+  .service-group .group-note{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-bottom:16px;
+  }
+  .service-list{ list-style:none; }
+  .service-list li{
+    font-size:14.5px;
+    padding:9px 0;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+  }
+  .service-list li:first-child{ border-top:none; }
+  .service-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:var(--gold);
+    letter-spacing:.06em;
+    white-space:nowrap;
+  }
+
+  /* ---------- Doctor ---------- */
+  .doctor{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:44px;
+    align-items:start;
+  }
+  .doctor-avatar{
+    width:220px; height:220px;
+    border-radius:6px;
+    background:var(--teal-deep);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .doctor-avatar svg{ width:96px; height:96px; color:var(--mint-tint); }
+  .doctor-copy h2{ font-size:clamp(26px,3vw,32px); }
+  .doctor-copy .role-line{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--teal);
+    margin:8px 0 18px;
+    letter-spacing:.04em;
+  }
+  .doctor-copy p{ color:var(--ink-soft); font-size:15.5px; max-width:60ch; margin-bottom:14px; }
+
+  /* ---------- Info band: accessibility / amenities / payments / planning ---------- */
+  .info-band{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .info-card{ background:var(--surface); padding:26px 22px; }
+  .info-card .info-icon{ width:26px; height:26px; color:var(--teal); margin-bottom:14px; }
+  .info-card h3{ font-size:14.5px; font-weight:600; margin-bottom:10px; font-family:'Inter',sans-serif;}
+  .info-card ul{ list-style:none; }
+  .info-card li{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    padding:5px 0;
+    display:flex;
+    gap:8px;
+    align-items:flex-start;
+  }
+  .info-card li::before{
+    content:"";
+    width:5px; height:5px;
+    border-radius:50%;
+    background:var(--gold);
+    margin-top:6px;
+    flex-shrink:0;
+  }
+
+  /* ---------- Location ---------- */
+  .location-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .location-copy{ background:var(--surface); padding:40px; }
+  .location-copy .pc-row{ font-size:14.5px; }
+  .location-copy .pc-row:first-child{ border-top:none; padding-top:0; }
+  .map-panel{
+    background:
+      linear-gradient(var(--teal-deep), var(--teal-deep)) padding-box,
+      repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(255,255,255,0.055) 27px, rgba(255,255,255,0.055) 28px),
+      repeating-linear-gradient(90deg, transparent, transparent 27px, rgba(255,255,255,0.055) 27px, rgba(255,255,255,0.055) 28px);
+    position:relative;
+    min-height:340px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+  }
+  .pin{
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+    text-align:center;
+  }
+  .pin svg{ width:44px; height:44px; color:var(--gold); }
+  .pin .plus-code{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--mint-tint);
+    letter-spacing:.05em;
+    border:1px solid rgba(255,255,255,.25);
+    padding:6px 12px;
+    border-radius:3px;
+  }
+  .pin .btn{ margin-top:6px; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--teal-deep);
+    color:var(--mint-tint);
+    padding:52px 0 28px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:34px;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  footer .brand{ color:#fff; }
+  footer p.tag{ color:rgba(255,255,255,.62); font-size:14px; margin-top:12px; max-width:36ch; }
+  footer h4{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:14px;
+  }
+  footer .flinks{ list-style:none; font-size:14px; }
+  footer .flinks li{ margin-bottom:9px; color:rgba(255,255,255,.82); }
+  footer .flinks a{ text-decoration:none; }
+  footer .flinks a:hover{ text-decoration:underline; }
+  .foot-bottom{
+    padding-top:22px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:rgba(255,255,255,.5);
+  }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+  /* ---------- Responsive ---------- */
+  @media (min-width: 860px){
+    .phone-chip{ display:inline-flex; align-items:center; gap:7px; }
+  }
+  @media (max-width: 900px){
+    nav.links{ display:none; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .service-groups{ grid-template-columns:1fr; }
+    .info-band{ grid-template-columns:repeat(2,1fr); }
+    .doctor{ grid-template-columns:1fr; }
+    .doctor-avatar{ width:120px; height:120px; }
+    .doctor-avatar svg{ width:56px; height:56px; }
+    .location-grid{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr; gap:26px; }
+  }
+  @media (max-width: 520px){
+    .info-band{ grid-template-columns:1fr; }
+    .hero-cta{ flex-direction:column; align-items:stretch; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-row">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="40" height="40" rx="6" fill="#1F6F5C"/>
+        <path d="M20 10c-3.2 0-4.9 1.6-6.6 1.6-1.5 0-2.6-1-2.6-1s-1 1.3-1 4.4c0 4.3 1.6 8.6 2.8 11.2.8 1.7 1.5 3 2.7 3 1.4 0 1.5-3.4 2.2-5.7.4-1.3.7-2 1.5-2s1.1.7 1.5 2c.7 2.3.8 5.7 2.2 5.7 1.2 0 1.9-1.3 2.7-3 1.2-2.6 2.8-6.9 2.8-11.2 0-3.1-1-4.4-1-4.4s-1.1 1-2.6 1C24.9 11.6 23.2 10 20 10z" fill="#F4F6F0"/>
+      </svg>
+      <span>Chandra Dental Clinic<small>Dr. Umesh Chandra · Basti</small></span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#doctor">Doctor</a>
+      <a href="#visit">Visit &amp; access</a>
+      <a href="#location">Location</a>
+    </nav>
+    <div class="header-actions">
+      <a class="phone-chip" href="tel:+919628846633">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.66 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.43a2 2 0 0 1 2.11-.45c.86.32 1.75.54 2.65.66A2 2 0 0 1 22 16.92z"/></svg>
+        096288 46633
+      </a>
+      <a class="btn btn-primary" href="tel:+919628846633">Call to book</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:56px;">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">General &amp; Cosmetic Dentistry — Basti, UP</div>
+        <h1>Careful, precise dental&nbsp;care,<br><em>close to home.</em></h1>
+        <p class="lede">Chandra Dental Clinic is Dr. Umesh Chandra's practice on Block Road, Basti — offering everything from routine check-ups to root canals, implants and paediatric dentistry, under one roof.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="tel:+919628846633">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.66 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.43a2 2 0 0 1 2.11-.45c.86.32 1.75.54 2.65.66A2 2 0 0 1 22 16.92z"/></svg>
+            096288 46633
+          </a>
+          <a class="btn btn-outline" href="#services">See all services</a>
+        </div>
+      </div>
+
+      <div class="patient-card">
+        <p class="pc-name">Today at the clinic</p>
+        <p class="pc-role">Appointments recommended</p>
+
+        <div class="pc-row">
+          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div>
+            <span class="pc-label">Hours</span>
+            <span class="pc-value">Opens 10:00&nbsp;AM</span>
+          </div>
+        </div>
+        <div class="pc-row">
+          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.66 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.43a2 2 0 0 1 2.11-.45c.86.32 1.75.54 2.65.66A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <span class="pc-label">Phone</span>
+            <span class="pc-value"><a href="tel:+919628846633">096288 46633</a></span>
+          </div>
+        </div>
+        <div class="pc-row">
+          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <span class="pc-label">Address</span>
+            <span class="pc-value">Block Rd, near Hotel Maharani, Socket Pura, Basti, UP 272001</span>
+          </div>
+        </div>
+        <div class="pc-row">
+          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <div>
+            <span class="pc-label">Payments</span>
+            <span class="pc-value">NFC / tap-to-pay accepted</span>
+          </div>
+        </div>
+
+        <div class="pc-actions">
+          <a class="btn btn-primary" href="tel:+919628846633">Call clinic</a>
+          <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=Chandra+Dental+Clinic+Block+Rd+near+Hotel+Maharani+Socket+Pura+Basti+Uttar+Pradesh+272001" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNATURE TOOTH-CHART DIVIDER -->
+  <div class="chart-divider">
+    <div class="wrap">
+      <svg class="tooth-row" id="toothRow" viewBox="0 0 1120 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- generated by script below -->
+      </svg>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Chart of services</div>
+        <h2>Everything from a routine clean to a root canal.</h2>
+        <p>Sixteen procedures, grouped the way our chairside chart groups them — so you know exactly where your visit fits.</p>
+      </div>
+
+      <div class="service-groups reveal">
+        <div class="service-group">
+          <h3>
+            <svg class="group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C9 2 7.4 3.6 5.9 3.6 4.6 3.6 3.6 2.7 3.6 2.7S2.6 4 2.6 7.1c0 4.3 1.6 8.6 2.8 11.2.8 1.7 1.5 3 2.7 3 1.4 0 1.5-3.4 2.2-5.7.4-1.3.7-2 1.5-2"/><path d="M12 2c3 0 4.6 1.6 6.1 1.6 1.3 0 2.3-.9 2.3-.9s1 1.3 1 4.4c0 4.3-1.6 8.6-2.8 11.2-.8 1.7-1.5 3-2.7 3-1.4 0-1.5-3.4-2.2-5.7-.4-1.3-.7-2-1.5-2"/></svg>
+            Preventive &amp; general
+          </h3>
+          <p class="group-note">Routine visits that keep problems from starting</p>
+          <ul class="service-list">
+            <li>Check-ups <span class="service-tag">ROUTINE</span></li>
+            <li>Teeth cleaning <span class="service-tag">ROUTINE</span></li>
+            <li>X-ray <span class="service-tag">DIAGNOSTIC</span></li>
+            <li>Fillings and sealants <span class="service-tag">RESTORATIVE</span></li>
+            <li>Mouth guards <span class="service-tag">PROTECTIVE</span></li>
+          </ul>
+        </div>
+
+        <div class="service-group">
+          <h3>
+            <svg class="group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l.77.78L12 20.66l7.65-7.65.77-.78a5.4 5.4 0 0 0 0-7.65z"/></svg>
+            Cosmetic &amp; restorative
+          </h3>
+          <p class="group-note">Repairing and refining the smile you have</p>
+          <ul class="service-list">
+            <li>Cosmetic procedures <span class="service-tag">SMILE</span></li>
+            <li>Teeth whitening <span class="service-tag">SMILE</span></li>
+            <li>Veneers &amp; crowns <span class="service-tag">RESTORATIVE</span></li>
+            <li>Teeth reshaping <span class="service-tag">SMILE</span></li>
+            <li>Bonding <span class="service-tag">RESTORATIVE</span></li>
+            <li>Dentures &amp; bridges <span class="service-tag">RESTORATIVE</span></li>
+            <li>Dental implants <span class="service-tag">RESTORATIVE</span></li>
+          </ul>
+        </div>
+
+        <div class="service-group">
+          <h3>
+            <svg class="group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4.5 8-11.8A8 8 0 0 0 4 10.2C4 17.5 12 22 12 22z"/><path d="M9 10h6M12 7v6"/></svg>
+            Surgical &amp; advanced
+          </h3>
+          <p class="group-note">Deeper treatment, done with precision instruments</p>
+          <ul class="service-list">
+            <li>Extractions <span class="service-tag">SURGICAL</span></li>
+            <li>Oral surgery <span class="service-tag">SURGICAL</span></li>
+            <li>Root canals <span class="service-tag">SURGICAL</span></li>
+            <li>RCT by endomotor <span class="service-tag">PRECISION</span></li>
+            <li>Jaw bone fracture management <span class="service-tag">SURGICAL</span></li>
+          </ul>
+        </div>
+
+        <div class="service-group">
+          <h3>
+            <svg class="group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            Emergency &amp; children
+          </h3>
+          <p class="group-note">For sudden pain, and for your youngest patients</p>
+          <ul class="service-list">
+            <li>Emergency care <span class="service-tag">URGENT</span></li>
+            <li>Paediatrics <span class="service-tag">CHILDREN</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTOR -->
+  <section id="doctor" class="alt-bg">
+    <div class="wrap doctor reveal">
+      <div class="doctor-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      </div>
+      <div class="doctor-copy">
+        <div class="eyebrow">Your dentist</div>
+        <h2>Dr. Umesh Chandra</h2>
+        <p class="role-line">PRINCIPAL DENTIST · CHANDRA DENTAL CLINIC, BASTI</p>
+        <p>Dr. Umesh Chandra treats the full range of dental needs at the clinic, from a child's first check-up to root canal therapy performed with an endomotor for greater precision and comfort. Every visit starts the same way: a clear look at what's going on, and a straightforward plan for fixing it.</p>
+        <p>Appointments are recommended so your visit is ready to go the moment you arrive — call ahead and the team will fit you in as soon as possible, sooner still if it's an emergency.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT / ACCESSIBILITY / AMENITIES / PAYMENTS -->
+  <section id="visit">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Planning a visit</div>
+        <h2>What to expect when you arrive.</h2>
+      </div>
+
+      <div class="info-band reveal">
+        <div class="info-card">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="17" r="3.5"/><circle cx="6" cy="17" r="1.5"/><path d="M6 17 10 6h5l3 6M10 6l2 4"/></svg>
+          <h3>Accessibility</h3>
+          <ul>
+            <li>Wheelchair-accessible car park</li>
+            <li>Wheelchair-accessible entrance</li>
+            <li>Wheelchair-accessible toilet</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4a3 3 0 0 1 6 0v4"/></svg>
+          <h3>Amenities</h3>
+          <ul>
+            <li>Restroom on site</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+          <h3>Planning</h3>
+          <ul>
+            <li>Appointments recommended</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/><path d="M6 15h4"/></svg>
+          <h3>Payments</h3>
+          <ul>
+            <li>NFC mobile payments accepted</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location" class="alt-bg">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Find us</div>
+        <h2>On Block Road, next to Hotel Maharani.</h2>
+      </div>
+
+      <div class="location-grid reveal">
+        <div class="location-copy">
+          <div class="pc-row">
+            <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <span class="pc-label">Address</span>
+              <span class="pc-value">Block Rd, near Hotel Maharani, Socket Pura, Basti, Uttar Pradesh 272001</span>
+            </div>
+          </div>
+          <div class="pc-row">
+            <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div>
+              <span class="pc-label">Hours</span>
+              <span class="pc-value">Opens 10:00 AM</span>
+            </div>
+          </div>
+          <div class="pc-row">
+            <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.66 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.43a2 2 0 0 1 2.11-.45c.86.32 1.75.54 2.65.66A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <span class="pc-label">Phone</span>
+              <span class="pc-value"><a href="tel:+919628846633">096288 46633</a></span>
+            </div>
+          </div>
+          <div class="pc-row">
+            <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20l-5.4-2.7A1 1 0 0 1 3 16.4V4.6a1 1 0 0 1 1.4-.9L9 6m0 14l6-3m-6 3V6m6 11l4.6 2.3a1 1 0 0 0 1.4-.9V6.6a1 1 0 0 0-.6-.9L15 3m0 14V3m0 3L9 6"/></svg>
+            <div>
+              <span class="pc-label">Plus code</span>
+              <span class="pc-value">QPXG+JC Basti, Uttar Pradesh</span>
+            </div>
+          </div>
+          <div class="pc-actions" style="max-width:340px;">
+            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Chandra+Dental+Clinic+Block+Rd+near+Hotel+Maharani+Socket+Pura+Basti+Uttar+Pradesh+272001" target="_blank" rel="noopener">Get directions</a>
+            <a class="btn btn-outline" href="tel:+919628846633">Call clinic</a>
+          </div>
+        </div>
+        <div class="map-panel">
+          <div class="pin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <div style="color:#fff; font-family:'Fraunces',serif; font-size:17px; margin-bottom:4px;">Chandra Dental Clinic</div>
+              <div style="color:rgba(255,255,255,.65); font-size:13px;">Socket Pura, Basti, UP 272001</div>
+            </div>
+            <span class="plus-code">QPXG+JC Basti</span>
+            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Chandra+Dental+Clinic+Block+Rd+near+Hotel+Maharani+Socket+Pura+Basti+Uttar+Pradesh+272001" target="_blank" rel="noopener">Open in Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#top">
+          <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="40" height="40" rx="6" fill="#E3EFE7"/>
+            <path d="M20 10c-3.2 0-4.9 1.6-6.6 1.6-1.5 0-2.6-1-2.6-1s-1 1.3-1 4.4c0 4.3 1.6 8.6 2.8 11.2.8 1.7 1.5 3 2.7 3 1.4 0 1.5-3.4 2.2-5.7.4-1.3.7-2 1.5-2s1.1.7 1.5 2c.7 2.3.8 5.7 2.2 5.7 1.2 0 1.9-1.3 2.7-3 1.2-2.6 2.8-6.9 2.8-11.2 0-3.1-1-4.4-1-4.4s-1.1 1-2.6 1C24.9 11.6 23.2 10 20 10z" fill="#0E2D27"/>
+          </svg>
+          <span>Chandra Dental Clinic</span>
+        </a>
+        <p class="tag">Dr. Umesh Chandra's dental practice on Block Road, Basti — general, cosmetic, surgical and paediatric care.</p>
+      </div>
+      <div>
+        <h4>Clinic</h4>
+        <ul class="flinks">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#doctor">Dr. Umesh Chandra</a></li>
+          <li><a href="#visit">Accessibility &amp; amenities</a></li>
+          <li><a href="#location">Location &amp; directions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="flinks">
+          <li><a href="tel:+919628846633">096288 46633</a></li>
+          <li>Block Rd, near Hotel Maharani,<br>Socket Pura, Basti, UP 272001</li>
+          <li>Opens 10:00 AM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Chandra Dental Clinic. All rights reserved.</span>
+      <span>QPXG+JC Basti, Uttar Pradesh</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Build the signature tooth-row divider programmatically (16 teeth = 16 services)
+  (function buildToothRow(){
+    const svg = document.getElementById('toothRow');
+    const count = 16;
+    const w = 1120, h = 60;
+    const spacing = w / count;
+    let markup = '';
+    for(let i=0;i<count;i++){
+      const cx = spacing*i + spacing/2;
+      const cy = h/2;
+      const scale = 0.9 + (i % 3 === 0 ? 0.12 : 0);
+      markup += `<g transform="translate(${cx},${cy}) scale(${scale})" class="tooth-unit" style="opacity:0">
+        <path class="tooth-fill" d="M-10,-14 C-10,-20 -4,-22 0,-20 C4,-22 10,-20 10,-14 C10,-6 8,10 4,16 C2,20 -2,20 -4,16 C-8,10 -10,-6 -10,-14 Z"/>
+      </g>`;
+    }
+    svg.innerHTML = markup;
+
+    const units = svg.querySelectorAll('.tooth-unit');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          units.forEach((u, i)=>{
+            if(reduce){ u.style.opacity = 1; return; }
+            setTimeout(()=>{
+              u.style.transition = 'opacity .5s ease, transform .5s ease';
+              u.style.opacity = 1;
+            }, i*35);
+          });
+          io.disconnect();
+        }
+      });
+    }, {threshold:0.3});
+    io.observe(svg);
+  })();
+
+  // Generic scroll reveal
+  (function reveal(){
+    const items = document.querySelectorAll('.reveal');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){ items.forEach(i=>i.classList.add('is-visible')); return; }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    items.forEach(i=>io.observe(i));
+  })();
+</script>
+
+</body>
+</html>
